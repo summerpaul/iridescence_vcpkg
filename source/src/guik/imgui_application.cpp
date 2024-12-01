@@ -1,3 +1,9 @@
+/**
+ * @Author: Xia Yunkai
+ * @Date:   2024-10-29 22:41:55
+ * @Last Modified by:   Xia Yunkai
+ * @Last Modified time: 2024-12-01 15:55:24
+ */
 #include <guik/imgui_application.hpp>
 
 #include <iostream>
@@ -48,7 +54,7 @@ bool Application::init(const Eigen::Vector2i& size, const char* glsl_version, bo
   }
 
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
   if (background) {
     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
