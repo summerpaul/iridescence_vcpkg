@@ -1,0 +1,37 @@
+{
+  "dependencies": [
+    {
+      "name": "imgui",
+      "default-features": false,
+      "features": [
+        "glfw-binding",
+        "opengl3-binding",
+        "docking-experimental"
+      ]
+    },
+    "glfw3",
+    "glad",
+    "stb",
+    "glm",
+    "eigen3",
+    "fmt",
+    "pybind11",
+    "libpng",
+    "gl3w",
+    "libjpeg-turbo",
+    "assimp",
+    "implot",
+    "imguizmo"
+  ],
+  "overrides": [
+    {
+      "name": "imguizmo",
+      "version": "2024-05-29#1"
+    },
+    {
+      "name": "imgui",
+      "version": "1.89.3"
+    }
+  ],
+  "builtin-baseline": "cd124b84feb0c02a24a2d90981e8358fdee0e077"
+}

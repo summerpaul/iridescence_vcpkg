@@ -1,3 +1,9 @@
+/**
+ * @Author: Xia Yunkai
+ * @Date:   2024-10-29 22:41:55
+ * @Last Modified by:   Xia Yunkai
+ * @Last Modified time: 2024-12-01 15:02:23
+ */
 #include <guik/gl_canvas.hpp>
 
 #include <GL/gl3w.h>

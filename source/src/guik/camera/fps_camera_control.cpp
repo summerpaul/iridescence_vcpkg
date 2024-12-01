@@ -1,3 +1,9 @@
+/**
+ * @Author: Xia Yunkai
+ * @Date:   2024-10-29 22:41:55
+ * @Last Modified by:   Xia Yunkai
+ * @Last Modified time: 2024-12-01 14:57:30
+ */
 #include <guik/camera/fps_camera_control.hpp>
 
 #include <GLFW/glfw3.h>
@@ -150,34 +156,35 @@ void FPSCameraControl::update() {
 
   const Eigen::Matrix3f rotation = (Eigen::AngleAxisf(yaw, Eigen::Vector3f::UnitZ()) * Eigen::AngleAxisf(-pitch, Eigen::Vector3f::UnitY())).toRotationMatrix();
 
-  if (io.KeysDown[GLFW_KEY_W]) {
+  if (ImGui::IsKeyPressed(ImGuiKey_W)) {
     pos += rotation.col(0) * translation_speed * dt;
   }
-  if (io.KeysDown[GLFW_KEY_S]) {
+
+  if (ImGui::IsKeyPressed(ImGuiKey_S)) {
     pos -= rotation.col(0) * translation_speed * dt;
   }
-  if (io.KeysDown[GLFW_KEY_D]) {
+  if (ImGui::IsKeyPressed(ImGuiKey_D)) {
     pos -= rotation.col(1) * translation_speed * dt;
   }
-  if (io.KeysDown[GLFW_KEY_A]) {
+  if (ImGui::IsKeyPressed(ImGuiKey_A)) {
     pos += rotation.col(1) * translation_speed * dt;
   }
-  if (io.KeysDown[GLFW_KEY_R]) {
+  if (ImGui::IsKeyPressed(ImGuiKey_R)) {
     pos += rotation.col(2) * translation_speed * dt;
   }
-  if (io.KeysDown[GLFW_KEY_F]) {
+  if (ImGui::IsKeyPressed(ImGuiKey_F)) {
     pos -= rotation.col(2) * translation_speed * dt;
   }
-  if (io.KeysDown[GLFW_KEY_E]) {
+  if (ImGui::IsKeyPressed(ImGuiKey_E)) {
     yaw -= mouse_sensitivity_yaw * 2.0 * dt;
   }
-  if (io.KeysDown[GLFW_KEY_Q]) {
+  if (ImGui::IsKeyPressed(ImGuiKey_Q)) {
     yaw += mouse_sensitivity_yaw * 2.0 * dt;
   }
 }
 
 Eigen::Vector2f FPSCameraControl::depth_range() const {
-  return Eigen::Vector2f(near_,  far_);
+  return Eigen::Vector2f(near_, far_);
 }
 
 Eigen::Matrix4f FPSCameraControl::view_matrix() const {
@@ -189,4 +196,4 @@ Eigen::Matrix4f FPSCameraControl::view_matrix() const {
   glm::mat4 mat = glm::lookAt(glm::vec3(eye[0], eye[1], eye[2]), glm::vec3(center[0], center[1], center[2]), glm::vec3(up[0], up[1], up[2]));
   return Eigen::Map<Eigen::Matrix4f>(glm::value_ptr(mat)).eval();
 }
-}
+}  // namespace guik
