@@ -2,7 +2,7 @@
  * @Author: Xia Yunkai
  * @Date:   2024-12-01 16:24:55
  * @Last Modified by:   Xia Yunkai
- * @Last Modified time: 2025-03-30 10:20:09
+ * @Last Modified time: 2025-03-30 18:57:32
  */
 #include <glk/lines.hpp>
 #include <glk/thin_lines.hpp>
@@ -44,20 +44,20 @@ int main(int argc, char** argv) {
   // primitives
   viewer->update_drawable("solid_icosahedron", glk::Primitives::icosahedron(), guik::Rainbow().scale(0.5f).translate(-5.0f, 9.0f, 1.0f));
   viewer->update_drawable("solid_sphere", glk::Primitives::sphere(), guik::Rainbow().translate(-2.5f, 9.0f, 1.0f));
-  viewer->update_drawable(
-    "solid_bunny",
-    glk::Primitives::bunny(),
-    guik::Rainbow(Eigen::Translation3f(0.0f, 9.0f, 0.0f) * Eigen::AngleAxisf(M_PI_2, Eigen::Vector3f::UnitX()) * Eigen::UniformScaling<float>(8.0f)));
+  // viewer->update_drawable(
+  //   "solid_bunny",
+  //   glk::Primitives::bunny(),
+  //   guik::Rainbow(Eigen::Translation3f(0.0f, 9.0f, 0.0f) * Eigen::AngleAxisf(M_PI_2, Eigen::Vector3f::UnitX()) * Eigen::UniformScaling<float>(8.0f)));
   viewer->update_drawable("solid_cube", glk::Primitives::cube(), guik::Rainbow().translate(2.5f, 9.0f, 1.0f));
   viewer->update_drawable("solid_cone", glk::Primitives::cone(), guik::Rainbow().translate(5.0f, 9.0f, 1.0f));
 
   // wireframes
   viewer->update_drawable("wire_icosahedron", glk::Primitives::primitive_ptr(glk::Primitives::WIRE_ICOSAHEDRON), guik::Rainbow().scale(0.5f).translate(-5.0f, 12.0f, 1.0f));
   viewer->update_drawable("wire_sphere", glk::Primitives::primitive_ptr(glk::Primitives::WIRE_SPHERE), guik::Rainbow().translate(-2.5f, 12.0f, 1.0f));
-  viewer->update_drawable(
-    "wire_bunny",
-    glk::Primitives::primitive_ptr(glk::Primitives::WIRE_BUNNY),
-    guik::Rainbow(Eigen::Translation3f(0.0f, 12.0f, 0.0f) * Eigen::AngleAxisf(M_PI_2, Eigen::Vector3f::UnitX()) * Eigen::UniformScaling<float>(8.0f)));
+  // viewer->update_drawable(
+  //   "wire_bunny",
+  //   glk::Primitives::primitive_ptr(glk::Primitives::WIRE_BUNNY),
+  //   guik::Rainbow(Eigen::Translation3f(0.0f, 12.0f, 0.0f) * Eigen::AngleAxisf(M_PI_2, Eigen::Vector3f::UnitX()) * Eigen::UniformScaling<float>(8.0f)));
   viewer->update_drawable("wire_cube", glk::Primitives::primitive_ptr(glk::Primitives::WIRE_CUBE), guik::Rainbow().translate(2.5f, 12.0f, 1.0f));
   viewer->update_drawable("wire_cone", glk::Primitives::primitive_ptr(glk::Primitives::WIRE_CONE), guik::Rainbow().translate(5.0f, 12.0f, 1.0f));
 
@@ -67,11 +67,11 @@ int main(int argc, char** argv) {
     glk::Primitives::icosahedron(),
     guik::FlatColor(1.0f, 0.5f, 0.0f, 0.5f).scale(0.5f).translate(-5.0f, 15.0f, 1.0f).make_transparent());
   viewer->update_drawable("trans_sphere", glk::Primitives::sphere(), guik::FlatColor(1.0f, 0.5f, 0.0f, 0.5f).translate(-2.5f, 15.0f, 1.0f).make_transparent());
-  viewer->update_drawable(
-    "trans_bunny",
-    glk::Primitives::bunny(),
-    guik::FlatColor(1.0f, 0.5f, 0.0f, 0.5f, Eigen::Translation3f(0.0f, 15.0f, 0.0f) * Eigen::AngleAxisf(M_PI_2, Eigen::Vector3f::UnitX()) * Eigen::UniformScaling<float>(8.0f))
-      .make_transparent());
+  // viewer->update_drawable(
+  //   "trans_bunny",
+  //   glk::Primitives::bunny(),
+  //   guik::FlatColor(1.0f, 0.5f, 0.0f, 0.5f, Eigen::Translation3f(0.0f, 15.0f, 0.0f) * Eigen::AngleAxisf(M_PI_2, Eigen::Vector3f::UnitX()) * Eigen::UniformScaling<float>(8.0f))
+  //     .make_transparent());
   viewer->update_drawable("trans_cube", glk::Primitives::cube(), guik::FlatColor(1.0f, 0.5f, 0.0f, 0.5f).translate(2.5f, 15.0f, 1.0f).make_transparent());
   viewer->update_drawable("trans_cone", glk::Primitives::cone(), guik::FlatColor(1.0f, 0.5f, 0.0f, 0.5f).translate(5.0f, 15.0f, 1.0f).make_transparent());
 
@@ -118,7 +118,7 @@ int main(int argc, char** argv) {
   // Put texts on drawables
   hovered->add_text_on("trans_icosahedron", "icosahedron");
   hovered->add_text_on("trans_sphere", "sphere");
-  hovered->add_text_on("trans_bunny", "bunny");
+  // hovered->add_text_on("trans_bunny", "bunny");
   hovered->add_text_on("trans_cube", "cube");
   hovered->add_text_on("trans_cone", "cone");
 

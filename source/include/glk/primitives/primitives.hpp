@@ -74,7 +74,7 @@ private:
   std::shared_ptr<glk::Drawable> create_primitive_ptr(PrimitiveType type);
 
 private:
-  GLK_API static Primitives* instance_;
+  static Primitives* instance_;
 
   std::vector<std::shared_ptr<glk::Drawable>> meshes;
 };

@@ -1,3 +1,9 @@
+/**
+ * @Author: Xia Yunkai
+ * @Date:   2025-03-30 13:57:48
+ * @Last Modified by:   Xia Yunkai
+ * @Last Modified time: 2025-03-30 18:41:35
+ */
 #include <glk/path.hpp>
 
 #include <iostream>
@@ -62,11 +68,12 @@ std::string get_data_path() {
 
     data_path = find_file(hints, "shader/rainbow.vert");
     if (data_path.empty()) {
+      std::cout << "data_path:" << data_path << std::endl;
       std::cerr << console::bold_red << "error: data directory not found!!" << console::reset << std::endl;
       data_path = "./data";
     }
 
-    // std::cout << "data_path:" << data_path << std::endl;
+    std::cout << "data_path:" << data_path << std::endl;
   }
 
   return data_path;

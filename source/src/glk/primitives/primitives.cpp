@@ -1,3 +1,9 @@
+/**
+ * @Author: Xia Yunkai
+ * @Date:   2025-03-30 13:57:48
+ * @Last Modified by:   Xia Yunkai
+ * @Last Modified time: 2025-03-30 18:35:28
+ */
 #include <glk/primitives/primitives.hpp>
 
 #include <iostream>
@@ -20,7 +26,7 @@ namespace glk {
 
 using namespace glk::console;
 
-GLK_API Primitives* Primitives::instance_ = nullptr;
+Primitives* Primitives::instance_ = nullptr;
 
 const glk::Drawable& Primitives::create_primitive(PrimitiveType type) {
   if (meshes[type] == nullptr) {
