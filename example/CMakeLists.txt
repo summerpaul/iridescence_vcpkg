@@ -1,2 +1,58 @@
 add_executable(01_light_viewer_basic 01_light_viewer_basic.cpp)
 target_link_libraries(01_light_viewer_basic libiridescence)
+
+
+add_executable(ext_light_viewer_capture ext_light_viewer_capture.cpp)
+target_link_libraries(ext_light_viewer_capture libiridescence)
+
+add_executable(02_light_viewer_primitives 02_light_viewer_primitives.cpp)
+target_link_libraries(02_light_viewer_primitives libiridescence)
+
+add_executable(03_light_viewer_imgui 03_light_viewer_imgui.cpp)
+target_link_libraries(03_light_viewer_imgui libiridescence)
+
+add_executable(04_light_viewer_picking 04_light_viewer_picking.cpp)
+target_link_libraries(04_light_viewer_picking libiridescence)
+
+add_executable(05_light_viewer_multi_thread 05_light_viewer_multi_thread.cpp)
+target_link_libraries(05_light_viewer_multi_thread libiridescence)
+
+add_executable(06_light_viewer_async 06_light_viewer_async.cpp)
+target_link_libraries(06_light_viewer_async libiridescence)
+
+add_executable(07_light_viewer_plots 07_light_viewer_plots.cpp)
+target_link_libraries(07_light_viewer_plots libiridescence)
+
+
+add_executable(ext_light_viewer_brdf ext_light_viewer_brdf.cpp)
+target_link_libraries(ext_light_viewer_brdf libiridescence)
+
+
+
+add_executable(ext_light_viewer_custom ext_light_viewer_custom.cpp)
+target_link_libraries(ext_light_viewer_custom libiridescence)
+
+add_executable(ext_light_viewer_effects ext_light_viewer_effects.cpp)
+target_link_libraries(ext_light_viewer_effects libiridescence)
+
+
+
+add_executable(ext_light_viewer_gridmap ext_light_viewer_gridmap.cpp)
+target_link_libraries(ext_light_viewer_gridmap libiridescence)
+
+add_executable(ext_light_viewer_partial_rendering ext_light_viewer_partial_rendering.cpp)
+target_link_libraries(ext_light_viewer_partial_rendering libiridescence)
+
+
+
+add_executable(ext_partial_rendering ext_partial_rendering.cpp)
+target_link_libraries(ext_partial_rendering libiridescence)
+
+add_executable(ext_pointcloud_editor ext_pointcloud_editor.cpp)
+target_link_libraries(ext_pointcloud_editor libiridescence)
+
+add_executable(gl_test_field_example gl_test_field_example.cpp)
+target_link_libraries(gl_test_field_example libiridescence)
+
+add_executable(ext_model_viewer ext_model_viewer.cpp)
+target_link_libraries(ext_model_viewer libiridescence)

@@ -29,6 +29,7 @@ elseif(UNIX)
 endif()
 
 include(${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake)
+
 include_directories(${VCPKG_INCLUDE_DIRS})
 
 include_directories(source/include)

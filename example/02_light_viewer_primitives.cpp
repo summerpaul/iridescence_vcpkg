@@ -1,8 +1,8 @@
 /**
  * @Author: Xia Yunkai
- * @Date:   2025-03-23 15:25:29
+ * @Date:   2024-12-01 16:24:55
  * @Last Modified by:   Xia Yunkai
- * @Last Modified time: 2025-03-30 00:05:03
+ * @Last Modified time: 2025-03-30 10:20:09
  */
 #include <glk/lines.hpp>
 #include <glk/thin_lines.hpp>
@@ -13,8 +13,6 @@
 
 int main(int argc, char** argv) {
   auto viewer = guik::LightViewer::instance();
-  viewer->show_viewer_ui();
-  viewer->show_sub_viewers();
 
   // sine wave
   std::vector<Eigen::Vector3f> line_vertices;
@@ -26,6 +24,7 @@ int main(int argc, char** argv) {
 
   // thin lines (GL_LINES)
   const bool line_strip = true;
+  viewer->use_topdown_camera_control();
   viewer->update_drawable("thin_lines", std::make_shared<glk::ThinLines>(line_vertices, line_strip), guik::FlatColor(0.0f, 1.0f, 0.0f, 1.0f));
 
   // thick lines with flat and vertex colors
@@ -143,8 +142,11 @@ int main(int argc, char** argv) {
       viewer->shader_setting().add("z_range", z_range);
     }
   });
-
-  viewer->spin();
+  auto shader_setting = viewer->shader_setting();
+  auto drawables = viewer->get_drawables();
+  while (viewer->ok()) {
+    viewer->spin_once();
+  }
 
   return 0;
 }
