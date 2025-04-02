@@ -2,7 +2,7 @@
  * @Author: Xia Yunkai
  * @Date:   2024-12-01 16:24:55
  * @Last Modified by:   Xia Yunkai
- * @Last Modified time: 2025-03-30 18:57:32
+ * @Last Modified time: 2025-04-02 11:15:55
  */
 #include <glk/lines.hpp>
 #include <glk/thin_lines.hpp>
@@ -11,13 +11,15 @@
 #include <guik/hovered_drawings.hpp>
 #include <guik/viewer/light_viewer.hpp>
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
   auto viewer = guik::LightViewer::instance();
 
   // sine wave
   std::vector<Eigen::Vector3f> line_vertices;
   std::vector<Eigen::Vector4f> line_colors;
-  for (double x = -5.0; x <= 5.0; x += 0.1) {
+  for (double x = -5.0; x <= 5.0; x += 0.1)
+  {
     line_vertices.push_back(Eigen::Vector3f(x, std::cos(x), 1.0f));
     line_colors.push_back(glk::colormapf(glk::COLORMAP::TURBO, (x + 5.0) / 10.0));
   }
@@ -25,6 +27,8 @@ int main(int argc, char** argv) {
   // thin lines (GL_LINES)
   const bool line_strip = true;
   viewer->use_topdown_camera_control();
+  viewer->show_sub_viewers();
+  viewer->show_viewer_ui();
   viewer->update_drawable("thin_lines", std::make_shared<glk::ThinLines>(line_vertices, line_strip), guik::FlatColor(0.0f, 1.0f, 0.0f, 1.0f));
 
   // thick lines with flat and vertex colors
@@ -34,9 +38,10 @@ int main(int argc, char** argv) {
   // coordinate systems
   bool draw_coords = true;
   viewer->register_ui_callback("coord_rendering_setting", [&] { ImGui::Checkbox("coords", &draw_coords); });
-  viewer->register_drawable_filter("coord_filter", [&](const std::string& drawable_name) { return draw_coords || drawable_name.find("coord_") == std::string::npos; });
+  viewer->register_drawable_filter("coord_filter", [&](const std::string &drawable_name) { return draw_coords || drawable_name.find("coord_") == std::string::npos; });
 
-  for (double x = -5.0f; x <= 5.0f; x += 2.0) {
+  for (double x = -5.0f; x <= 5.0f; x += 2.0)
+  {
     Eigen::Affine3f transform = Eigen::Translation3f(x, 6.0f, 1.0f) * Eigen::Quaternionf::UnitRandom();
     viewer->update_drawable("coord_" + std::to_string(x), glk::Primitives::coordinate_system(), guik::VertexColor(transform));
   }
@@ -63,9 +68,9 @@ int main(int argc, char** argv) {
 
   // transparent
   viewer->update_drawable(
-    "trans_icosahedron",
-    glk::Primitives::icosahedron(),
-    guik::FlatColor(1.0f, 0.5f, 0.0f, 0.5f).scale(0.5f).translate(-5.0f, 15.0f, 1.0f).make_transparent());
+      "trans_icosahedron",
+      glk::Primitives::icosahedron(),
+      guik::FlatColor(1.0f, 0.5f, 0.0f, 0.5f).scale(0.5f).translate(-5.0f, 15.0f, 1.0f).make_transparent());
   viewer->update_drawable("trans_sphere", glk::Primitives::sphere(), guik::FlatColor(1.0f, 0.5f, 0.0f, 0.5f).translate(-2.5f, 15.0f, 1.0f).make_transparent());
   // viewer->update_drawable(
   //   "trans_bunny",
@@ -86,17 +91,21 @@ int main(int argc, char** argv) {
     ImGui::Checkbox("wireframes", &draw_wireframes);
     ImGui::Checkbox("transparent", &draw_transparent);
   });
-  viewer->register_drawable_filter("drawable_filter", [&](const std::string& drawable_name) {
-    if (!draw_lines && drawable_name.find("line") != std::string::npos) {
+  viewer->register_drawable_filter("drawable_filter", [&](const std::string &drawable_name) {
+    if (!draw_lines && drawable_name.find("line") != std::string::npos)
+    {
       return false;
     }
-    if (!draw_primitives && drawable_name.find("solid_") != std::string::npos) {
+    if (!draw_primitives && drawable_name.find("solid_") != std::string::npos)
+    {
       return false;
     }
-    if (!draw_wireframes && drawable_name.find("wire_") != std::string::npos) {
+    if (!draw_wireframes && drawable_name.find("wire_") != std::string::npos)
+    {
       return false;
     }
-    if (!draw_transparent && drawable_name.find("trans_") != std::string::npos) {
+    if (!draw_transparent && drawable_name.find("trans_") != std::string::npos)
+    {
       return false;
     }
 
@@ -138,13 +147,15 @@ int main(int argc, char** argv) {
   // Change the coloring bandwidth of the guik::Rainbow coloring scheme
   Eigen::Vector2f z_range(-3.0f, 5.0f);
   viewer->register_ui_callback("control_z_range", [&] {
-    if (ImGui::DragFloatRange2("z_range", &z_range[0], &z_range[1], 0.01f)) {
+    if (ImGui::DragFloatRange2("z_range", &z_range[0], &z_range[1], 0.01f))
+    {
       viewer->shader_setting().add("z_range", z_range);
     }
   });
   auto shader_setting = viewer->shader_setting();
   auto drawables = viewer->get_drawables();
-  while (viewer->ok()) {
+  while (viewer->ok())
+  {
     viewer->spin_once();
   }
 
